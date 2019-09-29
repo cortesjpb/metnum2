@@ -54,7 +54,7 @@ def Euler(faprox,freal,h,I,y0):
     print(df)
     
     # Grafico
-    graficar(df)    
+    graficar(df)
     
 def graficar(df):
     fig = plt.figure(figsize=[10,10])
@@ -74,11 +74,10 @@ def graficar(df):
 # In[4]:
 
 
-w
+# Definir intervalo I, tamaño de paso h y valor iniciar y0
+I = [0,1]
+h = 0.25
+y0 = 0.0
 
-
-# In[ ]:
-
-
-
+Euler(f,yReal,h,I,y0)
 
