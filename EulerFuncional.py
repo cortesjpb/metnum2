@@ -26,7 +26,7 @@ def yReal(t):
 # In[3]:
 
 
-def Euler(faprox,freal,h,I,y0):
+def Euler(faprox,freal,h,I,y0,grafico=True):
     
     '''
     faprox = Funcion a Aproximar
@@ -34,6 +34,7 @@ def Euler(faprox,freal,h,I,y0):
     h = Tamaño del paso
     I = Par [a,b] para calcular los pasos
     y0 = Valor iniciar conocido
+    grafico = Decido Realizar el o no el grafico
     '''    
     
     # Determino los pasos a utilizar en funcion del intervalo I y el tamaño de paso h
@@ -54,10 +55,15 @@ def Euler(faprox,freal,h,I,y0):
         df = df.append(pd.DataFrame(np.array([[t,yaprox,yreal,abs(yaprox-y),abs(yaprox-yreal)]]),columns=columnas),ignore_index=True)
     
     # Hago un print de la tabla
-    print(df)
+    if grafico:
+        print(df)
     
     # Grafico las funciones y los errores
-    graficar(df)
+    if grafico:
+        graficar(df)
+    
+    # Retorno la tabla
+    return df
     
 
 
@@ -93,9 +99,9 @@ def graficar(df):
 
 
 # Definir intervalo I, tamaño de paso h y valor iniciar y0
-I = [0,1]
-h = 0.10
-y0 = 0.0
+#I = [0,1]
+#h = 0.10
+#y0 = 0.0
 
-Euler(f,yReal,h,I,y0)
+#tabla = Euler(f,yReal,h,I,y0,True)
 
