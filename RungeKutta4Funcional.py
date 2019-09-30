@@ -51,10 +51,10 @@ def RungeKutta4(faprox,freal,h,I,y0,grafico):
         t = pasos[i]
         t0 = t-h
         y = float(df["yAprox"].loc[i])
-        k1 = f(t0,y)
-        k2 = f(t0+(h/2),y+(h*k1/2))
-        k3 = f(t0+(h/2),y+(h*k2/2))
-        k4 = f(t0+h,y+(h*k3))
+        k1 = faprox(t0,y)
+        k2 = faprox(t0+(h/2),y+(h*k1/2))
+        k3 = faprox(t0+(h/2),y+(h*k2/2))
+        k4 = faprox(t0+h,y+(h*k3))
         yaprox = y+((h/6)*(k1+2*k2+2*k3+k4))    #Método de Runge Kutta 4
         yreal = freal(t)
         df = df.append(pd.DataFrame(np.array([[t,yaprox,yreal,abs(yaprox-y),abs(yaprox-yreal)]]),columns=columnas),ignore_index=True)

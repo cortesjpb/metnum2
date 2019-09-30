@@ -52,8 +52,8 @@ def trapecio(faprox,freal,h,I,y0,grafico):
         t = pasos[i]
         t0 = t-h
         y = float(df["yAprox"].loc[i])
-        k1 = f(t0,y)
-        k2 = f(t+(h/2),y+(h*k1/2))        
+        k1 = faprox(t0,y)
+        k2 = faprox(t+(h/2),y+(h*k1/2))        
         yaprox = y+((h/6)*(k1+k2))    #Método de Runge Kutta 4
         yreal = freal(t)
         df = df.append(pd.DataFrame(np.array([[t,yaprox,yreal,abs(yaprox-y),abs(yaprox-yreal)]]),columns=columnas),ignore_index=True)
