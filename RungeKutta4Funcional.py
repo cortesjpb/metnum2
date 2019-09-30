@@ -42,7 +42,7 @@ def RungeKutta4(faprox,freal,h,I,y0,grafico):
     
     # Creo un DataFrame para hacer la tabla y poder graficar luego
     columnas=["t","yAprox","yReal","eLocal","eGlobal"]
-    df = pd.DataFrame(np.array([[pasos[0]-h,y0,y0,0.0,0.0]]),columns=columnas)    
+    df = pd.DataFrame(np.array([[I[0],y0,y0,0.0,0.0]]),columns=columnas)    
     
     # Usando la "fila anterior" calculo el siguiente resutlado
     for i in range(len(pasos)):        
