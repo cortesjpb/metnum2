@@ -36,7 +36,8 @@ y0 = Valor iniciar conocido
 
 def Euler(faprox,freal,h,I,y0):
     # Calculos los pasos con los que aproximar
-    pasos = [I[0]+(i*h) for i in range(1,int((I[1]-I[0])//h)+1)]
+    #pasos = [I[0]+(i*h) for i in range(1,int((I[1]-I[0])//h)+1)]
+    pasos = [i for i in np.arange(I[0]+h,I[1]+h,h)]
     
     # Creo un DataFrame para hacer la tabla y poder graficar luego
     columnas=["t","yAprox","yReal","eLocal","eGlobal"]
