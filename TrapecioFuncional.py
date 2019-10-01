@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[ ]:
 
 
 import pandas as pd
@@ -9,7 +9,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-# In[2]:
+# In[ ]:
 
 
 def f(t,y):
@@ -23,7 +23,7 @@ def yReal(t):
     #return ((2*t)+1)/((t**2)+1)                                                 # Ejemplo Euler
 
 
-# In[3]:
+# In[ ]:
 
 
 def trapecio(faprox,freal,h,I,y0,grafico):
@@ -66,6 +66,11 @@ def trapecio(faprox,freal,h,I,y0,grafico):
     if grafico:
         graficar(df)   
     
+
+
+# In[ ]:
+
+
 def graficar(df):
     
     '''
@@ -89,7 +94,7 @@ def graficar(df):
     plt.show()
 
 
-# In[4]:
+# In[ ]:
 
 
 I = [0.0,1.0]    

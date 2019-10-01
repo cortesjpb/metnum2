@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[ ]:
 
 
 import pandas as pd
@@ -9,21 +9,23 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-# In[2]:
+# In[ ]:
 
 
 def f(t,y):
     return (t*(np.e**(3*t)))-(2*y)   # TP1 b)
     #return 1 + ((t-y)**2)           # TP1 a)
     #return (2-(2*t*y))/((t**2)+1)   # Ejemplo Euler
+    #return np.cos(2*t)+np.sin(3*t)
 
 def yReal(t):
     return (1/5)*t*(np.e**(3*t))-(1/25)*(np.e**(3*t))+((1/25)*(np.e**(-2*t)))    # TP1 b)
     #return t + (1/(1-t))                                                        # TP1 a)
     #return ((2*t)+1)/((t**2)+1)                                                 # Ejemplo Euler
+    #return (1/2)*np.sin(2*t)-(1/3)*np.cos(3*t)+(4/3)
 
 
-# In[3]:
+# In[ ]:
 
 
 def RungeKutta4(faprox,freal,h,I,y0,grafico):
@@ -55,13 +57,13 @@ def RungeKutta4(faprox,freal,h,I,y0,grafico):
         k2 = faprox(t0+(h/2),y+(h*k1/2))
         k3 = faprox(t0+(h/2),y+(h*k2/2))
         k4 = faprox(t0+h,y+(h*k3))
-        yaprox = y+((h/6)*(k1+2*k2+2*k3+k4))    #Método de Runge Kutta 4
+        yaprox = y+((h/6)*(k1+(2*k2)+(2*k3)+k4))    #Método de Runge Kutta 4
         yreal = freal(t)
         df = df.append(pd.DataFrame(np.array([[t,yaprox,yreal,abs(yaprox-y),abs(yaprox-yreal)]]),columns=columnas),ignore_index=True)
     
     # Hago un print de la tabla
     if grafico:
-        print(df)
+        print(df.tail(50))
     
     # Grafico las funciones y los errores
     if grafico:
@@ -69,7 +71,11 @@ def RungeKutta4(faprox,freal,h,I,y0,grafico):
     
     #Retorno la columna Error Local para determinar el N que necesito
     return df['eLocal']
-    
+
+
+# In[ ]:
+
+
 def graficar(df):
     
     '''
@@ -93,13 +99,20 @@ def graficar(df):
     plt.show()
 
 
-# In[4]:
+# In[ ]:
 
 
 # Definir intervalo I, tamaño de paso h y valor iniciar y0
 I = [0,1]    
-y0 = 0.0
+y0 = 0
+h = 0.025
+RungeKutta4(f,yReal,h,I,y0,True)
 
+
+# In[ ]:
+
+
+"""
 i = 1;
 maxiter = 1
 while maxiter < 20:
@@ -111,4 +124,5 @@ while maxiter < 20:
     i += 1
     maxiter += 1
 print("El N necesario para que el Error Local sea menor a 10^-4 es i =", i)
+"""
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[ ]:
 
 
 import pandas as pd
@@ -9,21 +9,23 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-# In[2]:
+# In[ ]:
 
 
 def f(t,y):
-    return (t*(np.e**(3*t)))-(2*y)   # TP1 b)
+    #return (t*(np.e**(3*t)))-(2*y)   # TP1 b)
     #return 1 + ((t-y)**2)           # TP1 a)
     #return (2-(2*t*y))/((t**2)+1)   # Ejemplo Euler
+    return np.cos(2*t)+np.sin(3*t)
 
 def yReal(t):
-    return (1/5)*t*(np.e**(3*t))-(1/25)*(np.e**(3*t))+((1/25)*(np.e**(-2*t)))    # TP1 b)
+    #return (1/5)*t*(np.e**(3*t))-(1/25)*(np.e**(3*t))+((1/25)*(np.e**(-2*t)))    # TP1 b)
     #return t + (1/(1-t))                                                        # TP1 a)
     #return ((2*t)+1)/((t**2)+1)                                                 # Ejemplo Euler
+    return (1/2)*np.sin(2*t)-(1/3)*np.cos(3*t)+(4/3)
 
 
-# In[3]:
+# In[ ]:
 
 
 def Euler(faprox,freal,h,I,y0,grafico=True):
@@ -67,7 +69,7 @@ def Euler(faprox,freal,h,I,y0,grafico=True):
     
 
 
-# In[4]:
+# In[ ]:
 
 
 def graficar(df):
@@ -95,13 +97,13 @@ def graficar(df):
     plt.show()
 
 
-# In[5]:
+# In[ ]:
 
 
 # Definir intervalo I, tamaño de paso h y valor iniciar y0
-#I = [0,1]
-#h = 0.10
-#y0 = 0.0
+I = [0,1]
+h = 0.5
+y0 = 1
 
-#tabla = Euler(f,yReal,h,I,y0,True)
+tabla = Euler(f,yReal,h,I,y0,True)
 

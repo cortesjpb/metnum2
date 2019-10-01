@@ -65,8 +65,8 @@ def AdamBashford2(faprox,freal,h,I,y0,grafico):
         y = float(df["yAprox"].loc[i])
         y0 = float(df["yAprox"].loc[i-1])
         yaprox = y + ((h/2) * ((3*faprox(t,y))-faprox(t0,y0)))
-        yreal = freal(t)
-        df = df.append(pd.DataFrame(np.array([[t,yaprox,yreal,abs(yaprox-y),abs(yaprox-yreal)]]),columns=columnas),ignore_index=True)
+        yreal = freal(pasos[i])
+        df = df.append(pd.DataFrame(np.array([[pasos[i],yaprox,yreal,abs(yaprox-y),abs(yaprox-yreal)]]),columns=columnas),ignore_index=True)
     
     # Hago un print de la tabla
     if grafico:
@@ -82,7 +82,7 @@ def AdamBashford2(faprox,freal,h,I,y0,grafico):
 
 I = [0,1]
 y0 = 0
-h = 0.010
+h = 0.1
 
 AdamBashford2(f,yReal,h,I,y0,True)
 
